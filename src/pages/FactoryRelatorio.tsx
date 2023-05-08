@@ -42,6 +42,37 @@ const InputInfo = ({label, grow}) => {
     )
   }
 
+const CardMark = () => {
+  return(
+    <View style={{ width:"auto", justifyContent:"space-between", alignItems:"center", flexDirection:"row", marginBottom:32 }}>
+      <TouchableOpacity style={{ justifyContent:"space-between", alignItems:"center", backgroundColor:"#399cff", borderRadius:8,flexDirection:"row", padding:8, width:130 }}>
+          <View style={{ borderRadius:99, backgroundColor:"#399cff", width:40, height:40, borderColor:"#fff", borderWidth:1,justifyContent:"center", alignItems:"center" }}> 
+              <View style={{ borderRadius:99, backgroundColor:"#FFF", width:30, height:30, borderColor:"#fff", borderWidth:1, }}> 
+              </View>
+          </View>
+          <View >
+            <View>
+            <Text
+                style={{ color: "#FFF", fontWeight: '600', fontSize: 18 }}
+              >
+                CÉLULA
+              </Text>
+          </View>
+            </View>
+      </TouchableOpacity>
+      <TouchableOpacity style={{ justifyContent:"center", alignItems:"center", backgroundColor:"#399cff", borderRadius:8,flexDirection:"row", padding:8}}>
+      <View style={{ borderRadius:99, backgroundColor:"#399cff", width:40, height:40, borderColor:"#fff", borderWidth:1, }}> 
+          </View>
+          <View >
+            <Text>
+              Evento Ponte
+            </Text>
+          </View>
+      </TouchableOpacity>
+    </View>
+  )
+}
+
 
 export const FactoryRelatorio = () => {
   const largura = useRef(new Animated.Value(0.0)).current;
@@ -214,6 +245,7 @@ export const FactoryRelatorio = () => {
             <InputInfo label={"Valor da oferta:"}></InputInfo>
             <InputInfo label={"Data:"}></InputInfo>
             <InputInfo grow label={"Enfrentou alguma dificuldade durante a célula?"}></InputInfo>
+            <CardMark></CardMark>
             </ScrollView>
             <TouchableOpacity
               onPress={() => {
