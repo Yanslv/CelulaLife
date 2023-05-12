@@ -52,7 +52,7 @@ export async function makeRequest(url: string, opts = {}) {
     let response = await api(patchedOptions);
     return response;
   }catch(error){
-    // console.error(error)
+    console.error(error)
     // return error.toJSON()
 
   }
