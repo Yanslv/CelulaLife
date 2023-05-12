@@ -6,13 +6,18 @@ import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import axios from "axios";
 import { makeRequest } from "../../services/fecth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useStorageToken, useStorageUser, useToken, useUser } from '../../hooks/useAuth';
 
 export const Login = ({navigation}) => {
     const [isDark, toogleDark] = useDarkMode();
+    const [storageToken, setStorageToken] = useStorageToken();
+    const [storageUser, setStorageUser] = useStorageUser();
+    const [token, setToken] = useToken();
+    const [user, setUser] = useUser();
+
     const colors = getColors(getTheme(isDark));
     const videira_black = require('../../assets/images/videira-black.png')
     const videira_white = require('../../assets/images/videira_white.png')
-
     const nomeDevice = "yan_123"
 
     
@@ -27,9 +32,13 @@ export const Login = ({navigation}) => {
         try {
           const { data, status } = await axios.post(url, dados);
           const { user, token } = data;
-          if(status){
-            AsyncStorage.setItem('@token',token)
-            AsyncStorage.setItem('@user',JSON.stringify(user))
+          console.log(user, data, token)
+
+          if(status == 200){
+            setStorageToken(token);
+            setStorageUser(user);
+            setToken(token);
+            setUser(user);
           }
         } catch (error) {
           console.log(error);
